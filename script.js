@@ -1,4 +1,5 @@
 //global variables
+let currentBook;
 
 
 
@@ -12,11 +13,27 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-
-
+// display initial book list
 function displayBooks(book) {
-        const bookList = document.querySelector('.book-list');
-        const bookTitle = document.createElement('h4');
-        bookTitle.textContent = book.title;
-        bookList.append(bookTitle);
+    const bookList = document.querySelector('.book-list');
+    const bookTitle = document.createElement('h3');
+    bookTitle.textContent = book.title;
+    bookList.append(bookTitle);
+    bookTitle.addEventListener('click', () => {
+        bookDetails(book);
+    })
+}
+
+function bookDetails(books) {
+    currentBook = books;
+    const bookImg = document.createElement('img');
+    const bookDeets = document.querySelector('.books-details');
+    const bookName = document.createElement('h4');
+    const bookAuthor = document.createElement('p');
+    const releaseDate = document.createElement('p');
+    bookImg.src = books.image_url;
+    bookName.textContent = books.title;
+    releaseDate.textContent = books.release_date;
+    bookAuthor.textContent = books.artists[0].author.name;
+    bookDeets.append(bookImg, bookName, bookAuthor, releaseDate);
 }
