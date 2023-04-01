@@ -1,4 +1,4 @@
-Phase 1 Solo Project
+<!-- title: Phase 1 Solo Project -->
 
 outlined below is the details of my website
 
@@ -23,8 +23,8 @@ Details include:
 -Rating
 
 User can add:
-    -Review
-    -Rating
+[Review]
+[Rating]
 
 
 
