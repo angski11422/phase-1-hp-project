@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('https://legacy--api.herokuapp.com/api/v1/books')
     .then(resp => resp.json())
     .then((books) => {
-        books.forEach(book => 
-            {displayBooks(book);
+        books.forEach(book => {
+            displayBooks(book); 
         })
     })
 })
@@ -24,10 +24,11 @@ function displayBooks(book) {
     })
 }
 
+// display book details
 function bookDetails(books) {
-    currentBook = books;
-    const bookImg = document.createElement('img');
+    //currentBook = books;
     const bookDeets = document.querySelector('.books-details');
+    const bookImg = document.createElement('img');
     const bookName = document.createElement('h4');
     const bookAuthor = document.createElement('p');
     const releaseDate = document.createElement('p');
@@ -36,4 +37,21 @@ function bookDetails(books) {
     releaseDate.textContent = books.release_date;
     bookAuthor.textContent = books.artists[0].author.name;
     bookDeets.append(bookImg, bookName, bookAuthor, releaseDate);
+    addReview();
+}
+
+// add reviews to books
+function addReview() {
+    const bookDeets = document.querySelector('.books-details');
+    const reviewForm = document.createElement('form');
+    const reviewText = document.createElement('input');
+    const reviewSubmit = document.createElement('input');
+    reviewText.type = 'text';
+    reviewText.name ='review-input';
+    reviewText.placeholder = 'Your Review Here';
+    reviewSubmit.type ='submit';
+    reviewSubmit.value = 'Add Review';
+    reviewForm.append(reviewText, reviewSubmit);
+    bookDeets.appendChild(reviewForm);
+    
 }
