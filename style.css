@@ -23,3 +23,12 @@ main {
 ul {
     list-style-type: none;
   }
+
+#review-text {
+    text-align: left;
+    font-weight: bold;
+}
+
+li {
+    font-weight: normal;
+}
