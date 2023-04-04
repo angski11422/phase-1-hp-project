@@ -39,14 +39,16 @@ function bookDetails(books) {
     const bookName = document.createElement('h4');
     const bookAuthor = document.createElement('p');
     const releaseDate = document.createElement('p');
+    const addReviews = document.createElement('ul');
     bookImg.src = books.image_url;
     bookName.textContent = books.title;
     releaseDate.textContent = books.release_date.slice(0,10);
+    addReviews.setAttribute('id', 'review-text');
     bookAuthor.textContent = `By ${books.artists[0].author.name}`;
     while(bookDeets.firstChild) {
         bookDeets.removeChild(bookDeets.lastChild);
     }
-    bookDeets.append(bookImg, bookName, bookAuthor, releaseDate);
+    bookDeets.append(bookImg, bookName, bookAuthor, releaseDate, addReviews);
     
   
     addReviewForm();
@@ -68,11 +70,16 @@ function addReviewForm() {
 
     reviewForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        addReviewToBook();
+        
+        let newReviewText = document.createElement('li');
+        let addReviewText = document.querySelector('#review-text');
+        newReviewText.textContent = e.target['review-input'].value;
+        addReviewText.appendChild(newReviewText);
+        // bookDeets.appendChild(addReviews);
         e.target.reset();
     })
 }
 // add a review to a book
-function addReviewToBook() {
+// function addReviewToBook() {
 
-}
+// }
