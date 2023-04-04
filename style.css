@@ -1,0 +1,22 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+
+img {
+    max-width: 100%;
+}
+
+div {
+    display: grid;
+    width: 840px;
+    grid-template-columns: 540px 300px;
+    align-items: start;
+    justify-content: space-between;
+  }
+  
+main {
+    text-align: center;
+}
+      

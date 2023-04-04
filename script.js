@@ -26,7 +26,7 @@ function displayBooks(book) {
 
 // display book details
 function bookDetails(books) {
-    //currentBook = books;
+    currentBook = books;
     const bookDeets = document.querySelector('.books-details');
     const bookImg = document.createElement('img');
     const bookName = document.createElement('h4');
@@ -34,14 +34,19 @@ function bookDetails(books) {
     const releaseDate = document.createElement('p');
     bookImg.src = books.image_url;
     bookName.textContent = books.title;
-    releaseDate.textContent = books.release_date;
-    bookAuthor.textContent = books.artists[0].author.name;
+    releaseDate.textContent = books.release_date.slice(0,10);
+    bookAuthor.textContent = `By ${books.artists[0].author.name}`;
+    while(bookDeets.firstChild) {
+        bookDeets.removeChild(bookDeets.lastChild);
+    }
     bookDeets.append(bookImg, bookName, bookAuthor, releaseDate);
-    addReview();
+    
+  
+    addReviewForm();
 }
 
-// add reviews to books
-function addReview() {
+// add review form to book details
+function addReviewForm() {
     const bookDeets = document.querySelector('.books-details');
     const reviewForm = document.createElement('form');
     const reviewText = document.createElement('input');
@@ -53,5 +58,13 @@ function addReview() {
     reviewSubmit.value = 'Add Review';
     reviewForm.append(reviewText, reviewSubmit);
     bookDeets.appendChild(reviewForm);
-    
 }
+//     reviewForm.addEventListener('submit', (e) => {
+//         e.preventDefault();
+//         addReviewToBook(currentBook, reviewText.value);
+//     })
+// }
+// // add a review to a book
+// function addReviewToBook() {
+
+// }
