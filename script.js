@@ -44,6 +44,7 @@ function bookDetails(books) {
     bookName.textContent = books.title;
     releaseDate.textContent = books.release_date.slice(0,10);
     addReviews.setAttribute('id', 'review-text');
+    addReviews.textContent = 'Reviews:';
     bookAuthor.textContent = `By ${books.artists[0].author.name}`;
     while(bookDeets.firstChild) {
         bookDeets.removeChild(bookDeets.lastChild);
@@ -75,11 +76,6 @@ function addReviewForm() {
         let addReviewText = document.querySelector('#review-text');
         newReviewText.textContent = e.target['review-input'].value;
         addReviewText.appendChild(newReviewText);
-        // bookDeets.appendChild(addReviews);
         e.target.reset();
     })
 }
-// add a review to a book
-// function addReviewToBook() {
-
-// }
