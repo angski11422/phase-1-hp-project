@@ -19,6 +19,13 @@ function displayBooks(book) {
     const bookTitle = document.createElement('h3');
     bookTitle.textContent = book.title;
     bookList.append(bookTitle);
+    bookTitle.addEventListener('mouseover', (e) => {
+        e.target.style.color = 'purple';
+        setTimeout(() => {
+            e.target.style.color = '';
+        }, 500);
+    },
+        false);
     bookTitle.addEventListener('click', () => {
         bookDetails(book);
     })
@@ -58,13 +65,14 @@ function addReviewForm() {
     reviewSubmit.value = 'Add Review';
     reviewForm.append(reviewText, reviewSubmit);
     bookDeets.appendChild(reviewForm);
-}
-//     reviewForm.addEventListener('submit', (e) => {
-//         e.preventDefault();
-//         addReviewToBook(currentBook, reviewText.value);
-//     })
-// }
-// // add a review to a book
-// function addReviewToBook() {
 
-// }
+    reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        addReviewToBook();
+        e.target.reset();
+    })
+}
+// add a review to a book
+function addReviewToBook() {
+
+}
